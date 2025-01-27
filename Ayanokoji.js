@@ -24,7 +24,7 @@ async function notiferr(notif) {
  const oreki = `⚡ 𝗔𝗱𝗮 𝗘𝗿𝗿𝗼𝗿\n\n𝖯𝗋𝗈𝗃𝖾𝗄: ${nama}\n𝖤𝗋𝗋𝗈𝗋: ${notif}`;
  const { data } = await axios.get(`https://api.callmebot.com/facebook/send.php?apikey=${notifkey}&text=${encodeURIComponent(oreki)}`);
   } catch (futaro) {
-   console.log(logo.error + 'Terjadi kesalahan pada notif error: ' + futaro);
+   console.log(logo.error + 'Terjadi kesalahan pada notif' + futaro);
   }
 };
 async function getStream(hadi, isekai) {
@@ -80,7 +80,7 @@ if (err) {
   process.exit();
 }
 const body = event.body;
-if (!body || maintain == true && !admin.includes(event.senderID) || chatdm == false && event.isGroup == false && !admin.includes(event.senderID)) return; 
+if (!body || maintain === true && !admin.includes(event.senderID) || chatdm === false && event.isGroup == false && !admin.includes(event.senderID)) return; 
 if (body.toLowerCase() == "prefix") return api.sendMessage(`⚡ Awalan ${nama}: ${awalan}`, event.threadID, event.messageID);
 if (!body.startsWith(awalan)) return console.log(logo.pesan + `${event.senderID} > ${body}`);
    const cmd = body.slice(awalan.length).trim().split(/ +/g).shift().toLowerCase();
