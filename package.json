@@ -2,7 +2,7 @@
   "name": "Ayanokoji-Kiyotaka",
   "author": "Hady Zen'in",
   "description": "Chatbot messenger by hady zen",
-  "version": "1.2.2",
+  "version": "1.2.3",
   "main": "Ayanokoji.js",
   "lockfileVersion": 3,
   "requires": true,
