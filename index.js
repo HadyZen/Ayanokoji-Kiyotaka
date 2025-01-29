@@ -7,15 +7,12 @@ function hady() {
     cwd: __dirname,
     stdio: "inherit",
     shell: true
-  });
+});
 
   child.on("close", (code) => {
     if (code == 2) {
       hady(); 
-    }
-  });
-}
+  }
+ });
+};
 hady();
-setInterval(function() {
-  console.clear();
-}, 3600000); 
