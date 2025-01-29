@@ -19,7 +19,7 @@ async function kei(hady) {
     }
     return false; 
   }
-}
+};
 
 async function ayanokoji(hady) {
   const hadi = await kei(hady);
@@ -33,7 +33,7 @@ async function ayanokoji(hady) {
       console.log(logo.update + `Berhasil memperbarui file ${hady}.`);
     }
   });
-}
+};
 
 async function kiyotaka() {
   const packageData = JSON.parse(fs.readFileSync(path.join(__dirname, 'package.json'), 'utf8'));
