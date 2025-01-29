@@ -12,7 +12,7 @@
  const akun = fs.readFileSync('akun.txt', 'utf8');
  const { version } = require('./package');
  const gradient = require('gradient-string');
- const { awalan, nama, admin, proxy, port, bahasa: nakano, maintain, chatdm, notifkey, aikey, autorest, setting } = require('./kiyotaka');
+ const { awalan, nama, admin, proxy, port, bahasa: nakano, maintain, chatdm, notifkey, aikey, setting } = require('./kiyotaka');
  const { kuldown } = require('./hady-zen/kuldown');
 
 process.on('unhandledRejection', error => console.log(logo.error + error));
