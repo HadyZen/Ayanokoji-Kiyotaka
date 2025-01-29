@@ -8,16 +8,17 @@
   "aikey": "AIzaSyAXBvwNkZBckC8b3vTZVVuwRwlsPttTgkA", 
   "chatdm": false,
   "maintain": false,
+  "autorest": 14400000,
   "admin": ["100088085177610"], 
   "setting": {
-   "forceLogin": true,
-   "listenEvents": true,
-   "updatePresence": true,
-   "listenTyping": true,
-   "logLevel": "error",
-   "selfListen": false,
-   "selfListenEvent": true,
-   "autoMarkDelivery": false,
-   "autoReconnect": false
+    "forceLogin": true,
+    "listenEvents": true,
+    "updatePresence": true,
+    "listenTyping": true,
+    "logLevel": "error",
+    "selfListen": false,
+    "selfListenEvent": true,
+    "autoMarkDelivery": false,
+    "autoReconnect": false
  }
 }
