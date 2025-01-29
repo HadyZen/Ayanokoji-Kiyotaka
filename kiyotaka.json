@@ -8,7 +8,6 @@
   "aikey": "AIzaSyAXBvwNkZBckC8b3vTZVVuwRwlsPttTgkA", 
   "chatdm": false,
   "maintain": false,
-  "autorest": 14400000,
   "admin": ["100088085177610"], 
   "setting": {
     "forceLogin": true,
