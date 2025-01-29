@@ -7,7 +7,8 @@
  const fs = require('fs');
  const path = require('path');
  const axios = require('axios');
- const { exec } = require('child_process');
+ const cron = require('node-cron');
+ const { spawn } = require('child_process');
  const akun = fs.readFileSync('akun.txt', 'utf8');
  const { version } = require('./package');
  const gradient = require('gradient-string');
@@ -53,15 +54,24 @@ async function loadC() {
 
 console.log(kiyopon);
 setInterval(function() { loadC(); }, 1000);
-setInterval(function() { 
- console.clear();
- exec('refresh', (error, stdout, stderr) => {
-  if (error) {
- console.log(logo.error + `Error pada auto restart: ${error.message}`);
- return;
- }
+cron.schedule('0 */4 * * *', () => {
+  const child = spawn("refresh", {
+        cwd: __dirname,
+        stdio: "inherit",
+        shell: true
 });
-}, autorest); 
+
+    child.on('error', (err) => {
+    console.log(logo.error + 'Ada error pada autorest: ', err);
+});
+    child.on('exit', (code) => {
+      if (code === 0) {
+    console.log(ayanokoji('restar') + nama + ' berhasil dimulai ulang.');
+       } else {
+    console.log(logo.error + nama + ' gagal dimulai ulang: ', code);
+  }
+ });
+});
 console.log(ayanokoji('versi') + `${version}.`);
 console.log(ayanokoji('awalan') + `${awalan}`);
 console.log(ayanokoji('bahasa') + `${nakano}.`);
