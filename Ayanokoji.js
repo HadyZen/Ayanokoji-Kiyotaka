@@ -7,16 +7,17 @@
  const fs = require('fs');
  const path = require('path');
  const axios = require('axios');
+ const { exec } = require('child_process');
  const akun = fs.readFileSync('akun.txt', 'utf8');
  const { version } = require('./package');
  const gradient = require('gradient-string');
- const { awalan, nama, admin, proxy, port, bahasa: nakano, maintain, chatdm, notifkey, aikey, setting } = require('./kiyotaka');
+ const { awalan, nama, admin, proxy, port, bahasa: nakano, maintain, chatdm, notifkey, aikey, autorest, setting } = require('./kiyotaka');
  const { kuldown } = require('./hady-zen/kuldown');
 
 process.on('unhandledRejection', error => console.log(logo.error + error));
 process.on('uncaughtException', error => console.log(logo.error + error));
 const zen = { host: proxy, port: port };
-const kiyopon = gradient("#4A90E2", "#50E3C2", "#B8E986")(logo.ayanokoji);
+const kiyopon = gradient("#4A90E2", "#FF4F5A", "#F8C301")(logo.ayanokoji);
 global.Ayanokoji = { awalan: awalan, nama: nama, admin: admin, logo: logo, aikey: aikey };
 
 async function notiferr(notif) { 
@@ -51,7 +52,16 @@ async function loadC() {
 };
 
 console.log(kiyopon);
-setInterval(function() { loadC(); }, 60000); 
+setInterval(function() { loadC(); }, 1000);
+setInterval(function() { 
+ console.clear();
+ exec('refresh', (error, stdout, stderr) => {
+  if (error) {
+ console.log(logo.error + `Error pada auto restart: ${error.message}`);
+ return;
+ }
+});
+}, autorest); 
 console.log(ayanokoji('versi') + `${version}.`);
 console.log(ayanokoji('awalan') + `${awalan}`);
 console.log(ayanokoji('bahasa') + `${nakano}.`);
