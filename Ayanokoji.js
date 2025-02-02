@@ -55,6 +55,8 @@ async function loadC() {
 console.log(kiyopon);
 setInterval(function() { loadC(); }, 1000);
 cron.schedule('0 */4 * * *', () => {
+  console.clear();
+  process.exit();
   const child = spawn("refresh", {
         cwd: __dirname,
         stdio: "inherit",
