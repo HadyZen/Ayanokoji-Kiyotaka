@@ -1,7 +1,7 @@
 class VirtualPet {
   constructor(name) {
     this.name = name;
-    this.happiness = 40;
+    this.happiness = 60;
     this.hunger = 40;
     this.energy = 80;
     this.coins = 2;
@@ -11,21 +11,23 @@ class VirtualPet {
   feed() {
     if (this.hunger >= 10) {
       const randomFood = this.foods[Math.floor(Math.random() * this.foods.length)];
-      this.hunger -= 10;
-      this.happiness += 4;
+      const hadi = Math.floor(Math.random() * 10);
+      this.hunger += hadi;
+      this.happiness += 2;
       this.energy += 2;
       this.coins -= 10;
-      return `${this.name} senang makan ${randomFood}.\nPeliharaan kamu memiliki energi ${this.energy}, ${this.happiness} kebahagiaan, dan ${this.hunger} kelaparan.\nUang peliharaanmu dikurangi 10 untuk memberi makan ${this.name}.`;
+      return `${this.name} senang makan ${randomFood}.\nSekarang peliharaan kamu memiliki ${this.energy}% energi, ${this.happiness}% kebahagiaan, dan ${this.hunger}% kelaparan.\nUang peliharaanmu dikurangi 10 untuk memberi makan ${this.name}.`;
     } else {
       return `${this.name} sudah kenyang!`;
     }
   }
   play() {
     if (this.energy >= 10) {
-      this.happiness += 10;
-      this.energy -= 5;
-      this.coins += 6;
-      return `${this.name} senang bermain denganmu.\nSekarang peliharaanmu memiliki kebahagiaan ${this.happiness}, energi ${this.energy}, dan mendapatkan 6 uang.`;
+      this.happiness += 6;
+      this.hunger -= 4;
+      this.energy -= 10;
+      this.coins += Math.floor(Math.random() * 10);
+      return `${this.name} senang bermain denganmu.\nSekarang peliharaanmu memiliki ${this.happiness}% kebagian, ${this.energy}% energi, dan ${this.coin} uang.`;
     } else {
       return `${this.name} kamu terlalu lelah untuk main sekarang.`;
     }
@@ -33,8 +35,8 @@ class VirtualPet {
   rest() {
     const currentTime = Date.now();
     if (!this.lastRestTime || (currentTime - this.lastRestTime) >= 7200000) {
-      this.energy += 10;
-      this.happiness += 5;
+      this.energy += 20;
+      this.happiness -= 6;
       this.lastRestTime = currentTime;
       return `${this.name} mendapatkan ${this.energy} energi dan ${this.happiness} kebagian.`;
     } else {
@@ -43,7 +45,7 @@ class VirtualPet {
     }
   }
   getStatus() {
-    return `🜲 𝗦𝘁𝗮𝘁𝘂𝘀 𝗽𝗲𝗹𝗶𝗵𝗮𝗿𝗮𝗮𝗻\n\nNama: ${this.name}.\nEnergi: ${this.energy}.\nKebahagiaan: ${this.happiness}.\nKelaparan: ${this.hunger}.\nUang: ${this.coins}.`;
+    return `🜲 𝗦𝘁𝗮𝘁𝘂𝘀 𝗽𝗲𝗹𝗶𝗵𝗮𝗿𝗮𝗮𝗻\n\nNama: ${this.name}.\nEnergi: ${this.energy}%.\nKebahagiaan: ${this.happiness}%.\nKelaparan: ${this.hunger}%.\nUang: ${this.coins}.`;
   }
 }
 const fs = require("fs");
@@ -62,11 +64,11 @@ function savePetData() {
 }
 module.exports = {
   hady: {
-    nama: 'pet',
+    nama: "pet",
     peran: 0,
     kuldown: 10,
-    penulis: 'Hady Zen', 
-    tutor: '<aksi> <nama pet>'
+    penulis: "Hady Zen", 
+    tutor: "<aksi> <nama pet>"
   },
 
   Ayanokoji: async function ({ api, event, args }) {
