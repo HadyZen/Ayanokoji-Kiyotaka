@@ -4,7 +4,7 @@ hady: {
   penulis: "Hady Zen", 
   kuldown: 10,
   peran: 1,
-  tutor: "<id>"
+  tutor: "<id/reply/tag>"
 }, 
 
 bahasa: {
@@ -13,10 +13,17 @@ bahasa: {
 }, 
   
 Ayanokoji: async function ({ api, event, args, bhs }) {
-  if (args[0]) {
-    return api.removeUserFromGroup(args[0], event.threadID);
-  } else {
-    api.sendMessage(bhs('hadi'), event.threadID, event.messageID);
+if (event.messageReply) return api.removeUserFromGroup(event.messageReply.senderID, event.threadID);
+if (args[0]) {
+  const { mentions } = event;
+	let hadi = ''; 
+for (const id in mentions) { 
+  hadi += `${mentions[id].replace("@", "")}: ${id}\n`;
+}
+  api.removeUserFromGroup(`${hadi || args[0]}`, event.threadID);
+return;
+} else { 
+  api.sendMessage(bhs('hadi'), event.threadID, event.messageID);
   }
  }
 };
