@@ -28,7 +28,7 @@ class VirtualPet {
       this.energy -= 10;
       const kiyopon = Math.floor(Math.random() * 10);
       this.coins += kiyopon;
-      return `${this.name} senang bermain denganmu.\nSekarang peliharaanmu memiliki ${this.happiness}% kebagian, ${this.energy}% energi, dan ${this.coin} uang.`;
+      return `${this.name} senang bermain denganmu.\nSekarang peliharaanmu memiliki ${this.happiness}% kebagian, ${this.energy}% energi, dan ${this.coins} uang.`;
     } else {
       return `${this.name} kamu terlalu lelah untuk main sekarang.`;
     }
