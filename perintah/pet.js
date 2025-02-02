@@ -4,7 +4,7 @@ class VirtualPet {
     this.happiness = 40;
     this.hunger = 40;
     this.energy = 80;
-    this.coins = 0;
+    this.coins = 2;
     this.lastRestTime = null;
     this.foods = ["🍒", "🍎", "🍉", "🍑", "🍊", "🥭", "🍍", "🌶", "🍋", "🍈", "🍏", "🍐", "🥝", "🍇", "🥥", "🍅", "🥕", "🍠", "🌽", "🥦", "🥒", "🥬", "🥑", "🍆", "🥔", "🌰", "🥜", "🍞", "🥐", "🥖", "🥯", "🥞", "🍳", "🥚", "🧀", "🥓", "🥩", "🍗", "🍖", "🍔", "🌭", "🥪", "🥨", "🍟", "🍕", "🌮", "🌯", "🥙", "🥘", "🍝", "🥫", "🥣", "🥗", "🍲", "🍛", "🍜", "🦞", "🍣", "🍤", "🥡", "🍚", "🥟", "🥟", "🍢", "🍙", "🍘", "🍥", "🍡", "🥠", "🥮", "🍧", "🍨", "🍦", "🥧", "🍰", "🍮", "🎂", "🧁", "🍭", "🍫", "🍫", "🍩", "🍪", "🍯", "🧂", "🍿", "🥤", "🥛", "🍵", "☕", "🍹", "🍶"];
   }
@@ -15,7 +15,7 @@ class VirtualPet {
       this.happiness += 4;
       this.energy += 2;
       this.coins -= 10;
-      return `${this.name} senang makan ${randomFood}.\nPeliharaan kamu memiliki energi ${this.energy}, ${this.happy} kebahagiaan, dan ${this.hunger} kelaparan.\nUang peliharaanmu dikurangi 10 untuk memberi makan ${this.name}.`;
+      return `${this.name} senang makan ${randomFood}.\nPeliharaan kamu memiliki energi ${this.energy}, ${this.happiness} kebahagiaan, dan ${this.hunger} kelaparan.\nUang peliharaanmu dikurangi 10 untuk memberi makan ${this.name}.`;
     } else {
       return `${this.name} sudah kenyang!`;
     }
@@ -24,8 +24,8 @@ class VirtualPet {
     if (this.energy >= 10) {
       this.happiness += 10;
       this.energy -= 5;
-      this.coins += 5;
-      return `${this.name} senang bermain denganmu.\nSekarang peliharaanmu memiliki kebahagiaan ${this.happy}, energi ${this.energy}, dan mendapatkan 5 uang.`;
+      this.coins += 6;
+      return `${this.name} senang bermain denganmu.\nSekarang peliharaanmu memiliki kebahagiaan ${this.happiness}, energi ${this.energy}, dan mendapatkan 6 uang.`;
     } else {
       return `${this.name} kamu terlalu lelah untuk main sekarang.`;
     }
@@ -75,7 +75,7 @@ module.exports = {
     const hady = global.Ayanokoji.awalan;
 
     if (!action) {
-      return api.sendMessage(`🜲 𝗣𝗲𝗹𝗶𝗵𝗮𝗿𝗮𝗮𝗻\n\n• ${hady}pet buat\n• ${hady}pet makan\n• ${hady}pet main\n• ${hady}pet tidur\n• ${hady}pet status\n• ${hady}pet uang\n• ${hady}pet reset`, event.threadID, event.messageID);
+      return api.sendMessage(`🜲 𝗣𝗲𝗹𝗶𝗵𝗮𝗿𝗮𝗮𝗻\n\n${hady}pet buat\n${hady}pet makan\n${hady}pet main\n${hady}pet tidur\n${hady}pet status\n${hady}pet uang\n${hady}pet reset`, event.threadID, event.messageID);
     }
 
     if (action === "buat") {
@@ -129,7 +129,7 @@ module.exports = {
         savePetData();
         return api.sendMessage(`Peliharaan ${petName} telah diatur ulang, gunakan ${hady}pet buat <nama> untuk membuat peliharaan baru.`, event.threadID, event.messageID);
       default:
-        result = "`🜲 𝗣𝗲𝗹𝗶𝗵𝗮𝗿𝗮𝗮𝗻\n\n• ${hady}pet buat\n• ${hady}pet makan\n• ${hady}pet mulai\n• ${hady}pet tidur\n• ${hady}pet status\n• ${hady}pet uang\n• ${hady}pet reset";
+        result = "`🜲 𝗣𝗲𝗹𝗶𝗵𝗮𝗿𝗮𝗮𝗻\n\n${hady}pet buat\n${hady}pet makan\n${hady}pet mulai\n${hady}pet tidur\n${hady}pet status\n${hady}pet uang\n${hady}pet reset";
     }
 
     savePetData();
