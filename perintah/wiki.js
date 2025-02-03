@@ -14,7 +14,7 @@ module.exports = {
           kiyopon: "Enter the one you want to search" }
   }, 
   
-  Ayanokoji: async function ({ api, event, bhs }) {
+  Ayanokoji: async function ({ api, event, args, bhs }) {
     const input = args.join(' ');
     if (!input) return api.sendMessage(bhs('kiyopon'), event.threadID, event.messageID);
     
