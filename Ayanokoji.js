@@ -43,7 +43,7 @@ async function getStream(hadi, isekai) {
 async function getNama(kiyo) {
  try {
 const user = await axios.post(`https://www.facebook.com/api/graphql/?q=${`node(${kiyo}){name}`}`);
- return user.data[userID].name;
+ return user.data[kiyo].name;
  } catch (error) {
  return null;
  }
@@ -62,7 +62,6 @@ cron.schedule('0 */4 * * *', () => {
         stdio: "inherit",
         shell: true
 });
-
     child.on('error', (err) => {
     console.log(logo.error + 'Ada error pada autorest: ', err);
 });
@@ -102,7 +101,7 @@ if (err) {
   process.exit();
 }
 const body = event.body;
-if (!body || maintain === true && !admin.includes(event.senderID) || chatdm === false && event.isGroup == false && !admin.includes(event.senderID)) return; 
+if (!body || global.Ayanokoji.maintain === true && !admin.includes(event.senderID) || chatdm === false && event.isGroup == false && !admin.includes(event.senderID)) return; 
 if (body.toLowerCase() == "prefix") return api.sendMessage(`⚡ Awalan ${nama}: ${awalan}`, event.threadID, event.messageID);
 if (!body.startsWith(awalan)) return console.log(logo.pesan + `${event.senderID} > ${body}`);
    const cmd = body.slice(awalan.length).trim().split(/ +/g).shift().toLowerCase();
