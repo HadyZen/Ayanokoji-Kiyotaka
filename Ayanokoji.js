@@ -18,8 +18,8 @@
 process.on('unhandledRejection', error => console.log(logo.error + error));
 process.on('uncaughtException', error => console.log(logo.error + error));
 const zen = { host: proxy, port: port };
-const kiyopon = gradient("#4A90E2", "#FF4F5A", "#F8C301")(logo.ayanokoji);
-global.Ayanokoji = { awalan: awalan, nama: nama, admin: admin, logo: logo, aikey: aikey };
+const kiyopon = gradient("#ADD8E6", "#4682B4", "#00008B")(logo.ayanokoji);
+global.Ayanokoji = { awalan: awalan, nama: nama, admin: admin, logo: logo, aikey: aikey, bahasa: nakano, web: window.location.href, maintain: maintain };
 
 async function notiferr(notif) { 
   try { 
