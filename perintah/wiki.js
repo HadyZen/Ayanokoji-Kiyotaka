@@ -1,3 +1,4 @@
+const wiki = require('wikijs');
 module.exports = {
   hady: { 
     nama: "wiki", 
