@@ -79,6 +79,7 @@ console.log(ayanokoji('versi') + `${version}.`);
 console.log(ayanokoji('awalan') + `${awalan}`);
 console.log(ayanokoji('bahasa') + `${nakano}.`);
 console.log(ayanokoji('admin') + `${admin}.`);
+console.log(ayanokoji('webview') + `${web}.`);
 fs.readdir('./perintah', (err, files) => { 
  const shadow = files.map(file => path.parse(file).name);
 console.log(ayanokoji('perintah') + `${shadow}.`);
