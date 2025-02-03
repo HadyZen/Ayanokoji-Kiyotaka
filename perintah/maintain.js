@@ -1,6 +1,3 @@
-const fs = require('fs');
-const noah = JSON.parse(fs.readFileSync('kiyotaka.json', 'utf8'));
-
 module.exports = {
   hady: {
     nama: "maintain",
@@ -21,19 +18,15 @@ module.exports = {
     }
   }, 
     
-  Ayanokoji: async function({ api, event, args, bhs, loadC }) {
+  Ayanokoji: async function({ api, event, args, bhs }) {
     if (!args.join(' ')) return api.sendMessage(bhs('hadi'), event.threadID, event.messageID);
 
     if (args[0] == 'on') {
-      noah.maintain = true;
-      fs.writeFileSync('kiyotaka.json', JSON.stringify(noah, null, 2));
-      await loadC();
+      global.Ayanokoji.maintain = true;
       api.sendMessage(bhs('aya'), event.threadID, event.messageID);
 
    } else if (args[0] == 'off') {
-      noah.maintain = false;
-      fs.writeFileSync('kiyotaka.json', JSON.stringify(noah, null, 2));
-      await loadC();
+      global.Ayanokoji.maintain = false;
       api.sendMessage(bhs('nokoji'), event.threadID, event.messageID);
    }
   }
