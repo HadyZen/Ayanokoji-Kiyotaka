@@ -4,6 +4,7 @@
  const app = express();
  const login = require('./hady-zen/ayanokoji');
  const { logo, warna, font, ayanokoji } = require('./hady-zen/log');
+ const os = require('os');
  const fs = require('fs');
  const path = require('path');
  const axios = require('axios');
@@ -19,7 +20,8 @@ process.on('unhandledRejection', error => console.log(logo.error + error));
 process.on('uncaughtException', error => console.log(logo.error + error));
 const zen = { host: proxy, port: port };
 const kiyopon = gradient("#ADD8E6", "#4682B4", "#00008B")(logo.ayanokoji);
-global.Ayanokoji = { awalan: awalan, nama: nama, admin: admin, logo: logo, aikey: aikey, bahasa: nakano, web: window.location.href, maintain: maintain };
+const web = os.hostname();
+global.Ayanokoji = { awalan: awalan, nama: nama, admin: admin, logo: logo, aikey: aikey, bahasa: nakano, web: web, maintain: maintain };
 
 async function notiferr(notif) { 
   try { 
