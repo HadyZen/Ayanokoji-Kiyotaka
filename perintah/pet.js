@@ -1,57 +1,7 @@
-class VirtualPet {
-  constructor(name) {
-    this.name = name;
-    this.happiness = 60;
-    this.hunger = 40;
-    this.energy = 80;
-    this.coins = 2;
-    this.lastRestTime = null;
-    this.foods = ["🍒", "🍎", "🍉", "🍑", "🍊", "🥭", "🍍", "🌶", "🍋", "🍈", "🍏", "🍐", "🥝", "🍇", "🥥", "🍅", "🥕", "🍠", "🌽", "🥦", "🥒", "🥬", "🥑", "🍆", "🥔", "🌰", "🥜", "🍞", "🥐", "🥖", "🥯", "🥞", "🍳", "🥚", "🧀", "🥓", "🥩", "🍗", "🍖", "🍔", "🌭", "🥪", "🥨", "🍟", "🍕", "🌮", "🌯", "🥙", "🥘", "🍝", "🥫", "🥣", "🥗", "🍲", "🍛", "🍜", "🦞", "🍣", "🍤", "🥡", "🍚", "🥟", "🥟", "🍢", "🍙", "🍘", "🍥", "🍡", "🥠", "🥮", "🍧", "🍨", "🍦", "🥧", "🍰", "🍮", "🎂", "🧁", "🍭", "🍫", "🍫", "🍩", "🍪", "🍯", "🧂", "🍿", "🥤", "🥛", "🍵", "☕", "🍹", "🍶"];
-  }
-  feed() {
-    if (this.hunger >= 10) {
-      const randomFood = this.foods[Math.floor(Math.random() * this.foods.length)];
-      const hadi = Math.floor(Math.random() * 10);
-      this.hunger += hadi;
-      this.happiness += 2;
-      this.energy += 2;
-      this.coins -= 10;
-      return `${this.name} senang makan ${randomFood}.\nSekarang peliharaan kamu memiliki ${this.energy}% energi, ${this.happiness}% kebahagiaan, dan ${this.hunger}% kelaparan.\nUang peliharaanmu dikurangi 10 untuk memberi makan ${this.name}.`;
-    } else {
-      return `${this.name} sudah kenyang!`;
-    }
-  }
-  play() {
-    if (this.energy >= 10) {
-      this.happiness += 6;
-      this.hunger -= 4;
-      this.energy -= 10;
-      const kiyopon = Math.floor(Math.random() * 10);
-      this.coins += kiyopon;
-      return `${this.name} senang bermain denganmu.\nSekarang peliharaanmu memiliki ${this.happiness}% kebagian, ${this.energy}% energi, dan ${this.coins} uang.`;
-    } else {
-      return `${this.name} kamu terlalu lelah untuk main sekarang.`;
-    }
-  }
-  rest() {
-    const currentTime = Date.now();
-    if (!this.lastRestTime || (currentTime - this.lastRestTime) >= 7200000) {
-      this.energy += 20;
-      this.happiness -= 6;
-      this.lastRestTime = currentTime;
-      return `${this.name} mendapatkan ${this.energy} energi dan ${this.happiness} kebagian.`;
-    } else {
-      const remainingTime = Math.floor((7200000 - (currentTime - this.lastRestTime)) / 60000);
-      return `${this.name} sedang tidur, dibutuhkan ${remainingTime} menit untuk beristirahat penuh.`;
-    }
-  }
-  getStatus() {
-    return `🜲 𝗦𝘁𝗮𝘁𝘂𝘀 𝗽𝗲𝗹𝗶𝗵𝗮𝗿𝗮𝗮𝗻\n\nNama: ${this.name}.\nEnergi: ${this.energy}%.\nKebahagiaan: ${this.happiness}%.\nKelaparan: ${this.hunger}%.\nUang: ${this.coins}.`;
-  }
-}
 const fs = require("fs");
 const petDataFile = "peliharaan.json";
 const userPets = loadPetData();
+
 function loadPetData() {
   try {
     const data = fs.readFileSync(petDataFile);
@@ -60,9 +10,67 @@ function loadPetData() {
     return {};
   }
 }
+
 function savePetData() {
   fs.writeFileSync(petDataFile, JSON.stringify(userPets, null, 2));
 }
+
+function createPet(petName) {
+  return {
+    name: petName,
+    happiness: 60,
+    hunger: 40,
+    energy: 80,
+    coins: 2,
+    lastRestTime: null,
+    foods: ["🍒", "🍎", "🍉", "🍑", "🍊", "🥭", "🍍", "🌶", "🍋", "🍈", "🍏", "🍐", "🥝", "🍇", "🥥", "🍅", "🥕", "🍠", "🌽", "🥦", "🥒", "🥬", "🥑", "🍆", "🥔", "🌰", "🥜", "🍞", "🥐", "🥖", "🥯", "🥞", "🍳", "🥚", "🧀", "🥓", "🥩", "🍗", "🍖", "🍔", "🌭", "🥪", "🥨", "🍟", "🍕", "🌮", "🌯", "🥙", "🥘", "🍝", "🥫", "🥣", "🥗", "🍲", "🍛", "🍜", "🦞", "🍣", "🍤", "🥡", "🍚", "🥟", "🥟", "🍢", "🍙", "🍘", "🍥", "🍡", "🥠", "🥮", "🍧", "🍨", "🍦", "🥧", "🍰", "🍮", "🎂", "🧁", "🍭", "🍫", "🍫", "🍩", "🍪", "🍯", "🧂", "🍿", "🥤", "🥛", "🍵", "☕", "🍹", "🍶"],
+  };
+}
+
+function feed(pet) {
+  if (pet.hunger >= 10) {
+    const randomFood = pet.foods[Math.floor(Math.random() * pet.foods.length)];
+    const hadi = Math.floor(Math.random() * 10);
+    pet.hunger += hadi;
+    pet.happiness += 2;
+    pet.energy += 2;
+    pet.coins -= 10;
+    return `${pet.name} senang makan ${randomFood}.\nSekarang peliharaan kamu memiliki ${pet.energy}% energi, ${pet.happiness}% kebahagiaan, dan ${pet.hunger}% kelaparan.\nUang peliharaanmu dikurangi 10 untuk memberi makan ${pet.name}.`;
+  } else {
+    return `${pet.name} sudah kenyang!`;
+  }
+}
+
+function play(pet) {
+  if (pet.energy >= 10) {
+    pet.happiness += 6;
+    pet.hunger -= 4;
+    pet.energy -= 10;
+    const kiyopon = Math.floor(Math.random() * 10);
+    pet.coins += kiyopon;
+    return `${pet.name} senang bermain denganmu.\nSekarang peliharaanmu memiliki ${pet.happiness}% kebagian, ${pet.energy}% energi, dan ${pet.coins} uang.`;
+  } else {
+    return `${pet.name} kamu terlalu lelah untuk main sekarang.`;
+  }
+}
+
+function rest(pet) {
+  const currentTime = Date.now();
+  if (!pet.lastRestTime || (currentTime - pet.lastRestTime) >= 7200000) {
+    pet.energy += 20;
+    pet.happiness -= 6;
+    pet.lastRestTime = currentTime;
+    return `${pet.name} mendapatkan ${pet.energy} energi dan ${pet.happiness} kebagian.`;
+  } else {
+    const remainingTime = Math.floor((7200000 - (currentTime - pet.lastRestTime)) / 60000);
+    return `${pet.name} sedang tidur, dibutuhkan ${remainingTime} menit untuk beristirahat penuh.`;
+  }
+}
+
+function getStatus(pet) {
+  return `🜲 𝗦𝘁𝗮𝘁𝘂𝘀 𝗽𝗲𝗹𝗶𝗵𝗮𝗿𝗮𝗮𝗻\n\nNama: ${pet.name}.\nEnergi: ${pet.energy}%.\nKebahagiaan: ${pet.happiness}%.\nKelaparan: ${pet.hunger}%.\nUang: ${pet.coins}.`;
+}
+
 module.exports = {
   hady: {
     nama: "pet",
@@ -90,7 +98,7 @@ module.exports = {
         return api.sendMessage("Harap tentukan nama untuk peliharaan kamu.", event.threadID, event.messageID);
       }
 
-      userPets[event.senderID] = new VirtualPet(petName);
+      userPets[event.senderID] = createPet(petName);
       savePetData();
       return api.sendMessage(`Kamu telah membuat peliharaan bernama ${petName}.`, event.threadID, event.messageID);
     }
@@ -107,16 +115,16 @@ module.exports = {
         result = `Kamu telah membuat peliharaan bernama ${pet.name}.`;
         break;
       case "makan":
-        result = pet.feed();
+        result = feed(pet);
         break;
       case "main":
-        result = pet.play();
+        result = play(pet);
         break;
       case "tidur":
-        result = pet.rest();
+        result = rest(pet);
         break;
       case "status":
-        result = pet.getStatus();
+        result = getStatus(pet);
         break;
       case "uang":
         result = `${pet.name} memiliki uang: ${pet.coins}.`;
