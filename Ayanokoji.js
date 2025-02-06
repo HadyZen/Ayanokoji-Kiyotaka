@@ -50,7 +50,7 @@ if (fs.existsSync(path.join('hady-zen', 'kiyopon.db'))) {
 function addData(id) {
     if (data[id]) {
     } else {
-        data[id] = { "nama": "Kiyopon User", "uang": 0, "exp": 0, "level": 0 };
+        data[id] = { "nama": "Kiyopon User", "yen": 0, "exp": 0, "level": 0 };
         console.log(ayanokoji('database') + `${id} pengguna baru.`);
     }
     simpan();
@@ -84,9 +84,9 @@ const setUser = {
         simpan();
         return setUser; 
     },
-    uang: (id, newUang) => {
+    yen: (id, newUang) => {
         if (data[id]) {
-            data[id].uang = newUang;
+            data[id].yen = newUang;
             console.log(ayanokoji('database') + 'Pembaruan berhasil.');
         } else {
         }
