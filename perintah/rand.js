@@ -16,7 +16,7 @@ bahasa: {
   Ayanokoji: async function ({ api, event, args, bhs }) { 
    const hadi = args.join(" ");
    const itsuki = hadi.split(",");
- if (!hadi || !itsuki) {
+ if (!hadi.includes(',')) {
    return api.sendMessage(bhs('hadi'), event.thteadID, event.messageID)
  }
 const rand = Math.floor(Math.random() * itsuki.length);
