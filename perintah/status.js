@@ -9,6 +9,6 @@ module.exports = {
   
   Ayanokoji: async function ({ api, event, getData }) {
     const { nama, level, exp, yen } = getData(event.senderID);
-    api.sendMessage(`🜲 𝗦𝘁𝗮𝘁𝘂𝘀 \nNama: ${nama}\nId: ${event.senderID}\nYen: ${yen}\nLevel: ${level}`, event.threadID, event.messageID);
+    api.sendMessage(`🜲 𝗦𝘁𝗮𝘁𝘂𝘀\n\nNama: ${nama}\nId: ${event.senderID}\nYen: ${yen}¥\nLevel: ${level}`, event.threadID, event.messageID);
   }
 };
