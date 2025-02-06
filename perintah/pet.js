@@ -18,10 +18,10 @@ function savePetData() {
 function createPet(petName) {
   return {
     name: petName,
-    happiness: 60,
-    hunger: 40,
-    energy: 80,
-    coins: 2,
+    happiness: 50,
+    hunger: 50,
+    energy: 90,
+    coins: 10,
     lastRestTime: null,
     foods: ["🍒", "🍎", "🍉", "🍑", "🍊", "🥭", "🍍", "🌶", "🍋", "🍈", "🍏", "🍐", "🥝", "🍇", "🥥", "🍅", "🥕", "🍠", "🌽", "🥦", "🥒", "🥬", "🥑", "🍆", "🥔", "🌰", "🥜", "🍞", "🥐", "🥖", "🥯", "🥞", "🍳", "🥚", "🧀", "🥓", "🥩", "🍗", "🍖", "🍔", "🌭", "🥪", "🥨", "🍟", "🍕", "🌮", "🌯", "🥙", "🥘", "🍝", "🥫", "🥣", "🥗", "🍲", "🍛", "🍜", "🦞", "🍣", "🍤", "🥡", "🍚", "🥟", "🥟", "🍢", "🍙", "🍘", "🍥", "🍡", "🥠", "🥮", "🍧", "🍨", "🍦", "🥧", "🍰", "🍮", "🎂", "🧁", "🍭", "🍫", "🍫", "🍩", "🍪", "🍯", "🧂", "🍿", "🥤", "🥛", "🍵", "☕", "🍹", "🍶"],
   };
@@ -32,10 +32,10 @@ function feed(pet) {
     const randomFood = pet.foods[Math.floor(Math.random() * pet.foods.length)];
     const hadi = Math.floor(Math.random() * 10);
     pet.hunger += hadi;
-    pet.happiness += 2;
-    pet.energy += 2;
-    pet.coins -= 10;
-    return `${pet.name} senang makan ${randomFood}.\nSekarang peliharaan kamu memiliki ${pet.energy}% energi, ${pet.happiness}% kebahagiaan, dan ${pet.hunger}% kelaparan.\nUang peliharaanmu dikurangi 10 untuk memberi makan ${pet.name}.`;
+    pet.happiness += 1;
+    pet.energy += 5;
+    pet.coins -= 6;
+    return `${pet.name} senang makan ${randomFood}.\nSekarang peliharaan kamu memiliki ${pet.energy}% energi, ${pet.happiness}% kebahagiaan, dan ${pet.hunger}% kelaparan.\nUang peliharaanmu dikurangi 6 untuk memberi makan ${pet.name}.`;
   } else {
     return `${pet.name} sudah kenyang!`;
   }
@@ -43,9 +43,9 @@ function feed(pet) {
 
 function play(pet) {
   if (pet.energy >= 10) {
-    pet.happiness += 6;
+    pet.happiness += 1;
     pet.hunger -= 4;
-    pet.energy -= 10;
+    pet.energy -= 4;
     const kiyopon = Math.floor(Math.random() * 10);
     pet.coins += kiyopon;
     return `${pet.name} senang bermain denganmu.\nSekarang peliharaanmu memiliki ${pet.happiness}% kebagian, ${pet.energy}% energi, dan ${pet.coins} uang.`;
@@ -57,8 +57,8 @@ function play(pet) {
 function rest(pet) {
   const currentTime = Date.now();
   if (!pet.lastRestTime || (currentTime - pet.lastRestTime) >= 7200000) {
-    pet.energy += 20;
-    pet.happiness -= 6;
+    pet.energy += 50;
+    pet.happiness -= 4;
     pet.lastRestTime = currentTime;
     return `${pet.name} mendapatkan ${pet.energy} energi dan ${pet.happiness} kebagian.`;
   } else {
