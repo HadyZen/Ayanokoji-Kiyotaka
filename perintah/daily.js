@@ -7,8 +7,8 @@ module.exports = {
     tutor: ""
   }, 
   
-  Ayanokoji: async function ({ api, event, userData, setUser }) {
-  const { yen, exp, daily } = userData(event.senderID);
+  Ayanokoji: async function ({ api, event, getData, setUser }) {
+  const { yen, exp, daily } = getData(event.senderID);
     if (daily == null || daily !== global.Ayanokoji.tanggal) { 
   setUser(event.senderID, 'yen', yen + 2);
   setUser(event.senderID, 'exp', exp + 10);
