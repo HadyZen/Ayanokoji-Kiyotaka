@@ -64,12 +64,12 @@ function setUser(id, item, baru) {
   if (item == "nama" || item == "daily") {
     data[id][item] = baru;
     simpan();
-    console.log(ayanokoji('database') + ' Pembaruan berhasil.');
+    console.log(ayanokoji('database') + 'Pembaruan berhasil.');
   } else if (item == "yen" || item == "exp" || item == "level") {
     if (typeof baru === 'number') {
       data[id][item] = baru;
       simpan();    
-      console.log(ayanokoji('database') + ' Pembaruan berhasil.');
+      console.log(ayanokoji('database') + 'Pembaruan berhasil.');
     } else {
       console.log(ayanokoji('database') + 'Nilai untuk ' + item + ' harus berupa angka.');
     }
