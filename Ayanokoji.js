@@ -12,15 +12,19 @@
  const akun = fs.readFileSync('akun.txt', 'utf8');
  const { version } = require('./package');
  const gradient = require('gradient-string');
- const { awalan, nama, admin, proxy, port, bahasa: nakano, maintain, chatdm, notifkey, aikey, setting } = require('./kiyotaka');
+ const { awalan, nama, admin, proxy, port, bahasa: nakano, maintain, chatdm, notifkey, aikey, setting, zonawaktu } = require('./kiyotaka');
  const { kuldown } = require('./hady-zen/kuldown');
+ const moment = require('moment-timezone');
+ const now = moment.tz(zonawaktu);
 
 process.on('unhandledRejection', error => console.log(logo.error + error));
 process.on('uncaughtException', error => console.log(logo.error + error));
 const zen = { host: proxy, port: port };
 const kiyopon = gradient("#ADD8E6", "#4682B4", "#00008B")(logo.ayanokoji);
+const tanggal = now.format('YYYY-MM-DD');
+const waktu = now.format('HH:mm:ss');
 const web = `https://${process.env.PROJECT_DOMAIN}.glitch.me`;
-global.Ayanokoji = { awalan: awalan, nama: nama, admin: admin, logo: logo, aikey: aikey, bahasa: nakano, web: web, maintain: maintain };
+global.Ayanokoji = { awalan: awalan, nama: nama, admin: admin, logo: logo, aikey: aikey, bahasa: nakano, web: web, maintain: maintain, waktu: waktu, tanggal: tanggal };
 
 async function notiferr(notif) { 
   try { 
@@ -50,49 +54,26 @@ if (fs.existsSync(path.join('hady-zen', 'kiyopon.db'))) {
 function addData(id) {
     if (data[id]) {
     } else {
-        data[id] = { "nama": "Kiyopon User", "yen": 0, "exp": 0, "level": 1 };
+        data[id] = { "nama": "Kiyopon User", "yen": 0, "exp": 0, "level": 1, "daily": null };
         console.log(ayanokoji('database') + `${id} pengguna baru.`);
     }
     simpan();
 };
 
-const setUser = {
-    nama: (id, newNama) => {
-        if (data[id]) {
-            data[id].nama = newNama;
-            console.log(ayanokoji('database') + 'Pembaruan berhasil.');
-        } else {
-        }
-        simpan();
-        return setUser; 
-    },
-    exp: (id, newExp) => {
-        if (data[id]) {
-            data[id].exp = newExp;
-            console.log(ayanokoji('database') + 'Pembaruan berhasil.');
-        } else {
-        }
-        simpan();
-        return setUser; 
-    },
-    level: (id, newLv) => {
-        if (data[id]) {
-            data[id].level = newLv;
-            console.log(ayanokoji('database') + 'Pembaruan berhasil.');
-        } else {
-        }
-        simpan();
-        return setUser; 
-    },
-    yen: (id, newUang) => {
-        if (data[id]) {
-            data[id].yen = newUang;
-            console.log(ayanokoji('database') + 'Pembaruan berhasil.');
-        } else {
-        }
-        simpan();
-        return setUser; 
-    },
+function setUser(id, item, baru) {
+  if (item == "nama" || item == "daily") {
+    data[id][item] = baru;
+    simpan();
+    console.log(ayanokoji('database') + ' Pembaruan berhasil.');
+  } else if (item == "yen" || item == "exp" || item == "level") {
+    if (typeof baru === 'number') {
+      data[id][item] = baru;
+      simpan();    
+      console.log(ayanokoji('database') + ' Pembaruan berhasil.');
+    } else {
+      console.log(ayanokoji('database') + 'Nilai untuk ' + item + ' harus berupa angka.');
+    }
+  }
 };
 
 function getData(id) {
