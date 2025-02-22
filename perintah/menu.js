@@ -73,7 +73,7 @@ module.exports = {
       api.sendMessage(`Perintah ${args[0]} tidak ada.`, event.threadID, event.messageID);
     } else if (!args[0]) {
       const description = `Gunakan ${global.Ayanokoji.awalan}𝗺𝗲𝗻𝘂 <𝗽𝗲𝗿𝗶𝗻𝘁𝗮𝗵> untuk informasi lebih lanjut.`;
-      const message = `𝗨𝗦𝗘𝗥\n${commandList.user.join(', ') || 'Tidak ada perintah.'}\n\n𝗔𝗗𝗠𝗜𝗡 𝗚𝗥𝗨𝗣\n${commandList.adminGroups.join(', ') || 'Tidak ada perintah.'}\n\n𝗔𝗗𝗠𝗜𝗡 𝗕𝗢𝗧\n${commandList.adminBot.join(', ') || 'Tidak ada perintah.'}\n\n\n${description}`;
+      const message = `𝗨𝗦𝗘𝗥\n${commandList.user.join(', ') || 'Tidak ada perintah.'}\n\n𝗔𝗗𝗠𝗜𝗡 𝗚𝗖\n${commandList.adminGroups.join(', ') || 'Tidak ada perintah.'}\n\n𝗔𝗗𝗠𝗜𝗡 𝗕𝗢𝗧\n${commandList.adminBot.join(', ') || 'Tidak ada perintah.'}\n\n\n${description}`;
       api.sendMessage(message, event.threadID, event.messageID);
     }
   }
