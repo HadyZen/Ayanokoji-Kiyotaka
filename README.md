@@ -21,6 +21,9 @@ App: https://raw.githubusercontent.com/HadyZen/hady-zen-api/refs/heads/main/Tsuk
 ## TUTOR 🜲
 
 1. Unduh kiwi browser di play store <br>
+```hady
+https://play.google.com/store/apps/details?id=com.kiwibrowser.browser
+```
 2. Buka url dibawah ini di kiwi browser <br>
 ```hady
 https://glitch.com
