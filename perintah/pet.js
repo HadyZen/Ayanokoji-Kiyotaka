@@ -23,8 +23,19 @@ function createPet(petName) {
     energy: 90,
     coins: 10,
     lastRestTime: null,
+    daily: null, 
     foods: ["🍒", "🍎", "🍉", "🍑", "🍊", "🥭", "🍍", "🌶", "🍋", "🍈", "🍏", "🍐", "🥝", "🍇", "🥥", "🍅", "🥕", "🍠", "🌽", "🥦", "🥒", "🥬", "🥑", "🍆", "🥔", "🌰", "🥜", "🍞", "🥐", "🥖", "🥯", "🥞", "🍳", "🥚", "🧀", "🥓", "🥩", "🍗", "🍖", "🍔", "🌭", "🥪", "🥨", "🍟", "🍕", "🌮", "🌯", "🥙", "🥘", "🍝", "🥫", "🥣", "🥗", "🍲", "🍛", "🍜", "🦞", "🍣", "🍤", "🥡", "🍚", "🥟", "🥟", "🍢", "🍙", "🍘", "🍥", "🍡", "🥠", "🥮", "🍧", "🍨", "🍦", "🥧", "🍰", "🍮", "🎂", "🧁", "🍭", "🍫", "🍫", "🍩", "🍪", "🍯", "🧂", "🍿", "🥤", "🥛", "🍵", "☕", "🍹", "🍶"],
   };
+}
+
+function daily(pet) {
+  if (pet.daily == null || pet.daily !== global.Ayanokoji.tanggal) {
+    pet.daily = global.Ayanokoji.tanggal;
+    pet.coins += 6;
+    return "Kamu berhasil mengklaim hadiah harian 6 uang.";
+  } else {
+    return "Kamu sudah mengklaim hadiah hari ini.";
+  }
 }
 
 function feed(pet) {
@@ -86,7 +97,7 @@ module.exports = {
     const hady = global.Ayanokoji.awalan;
 
     if (!action) {
-      return api.sendMessage(`🜲 𝗣𝗲𝗹𝗶𝗵𝗮𝗿𝗮𝗮𝗻\n\n${hady}pet buat\n${hady}pet makan\n${hady}pet main\n${hady}pet tidur\n${hady}pet status\n${hady}pet uang\n${hady}pet reset`, event.threadID, event.messageID);
+      return api.sendMessage(`🜲 𝗣𝗲𝗹𝗶𝗵𝗮𝗿𝗮𝗮𝗻\n\n${hady}pet buat\n${hady}pet daily\n${hady}pet makan\n${hady}pet main\n${hady}pet tidur\n${hady}pet status\n${hady}pet reset`, event.threadID, event.messageID);
     }
 
     if (action === "buat") {
@@ -126,8 +137,8 @@ module.exports = {
       case "status":
         result = getStatus(pet);
         break;
-      case "uang":
-        result = `${pet.name} memiliki uang: ${pet.coins}.`;
+      case "daily":
+        result = daily(pet);
         break;
       case "reset":
         if (!petName) {
@@ -140,7 +151,7 @@ module.exports = {
         savePetData();
         return api.sendMessage(`Peliharaan ${petName} telah diatur ulang, gunakan ${hady}pet buat <nama> untuk membuat peliharaan baru.`, event.threadID, event.messageID);
       default:
-        result = "`🜲 𝗣𝗲𝗹𝗶𝗵𝗮𝗿𝗮𝗮𝗻\n\n${hady}pet buat\n${hady}pet makan\n${hady}pet mulai\n${hady}pet tidur\n${hady}pet status\n${hady}pet uang\n${hady}pet reset";
+        result = `🜲 𝗣𝗲𝗹𝗶𝗵𝗮𝗿𝗮𝗮𝗻\n\n${hady}pet buat\n${hady}pet daily\n${hady}pet makan\n${hady}pet mulai\n${hady}pet tidur\n${hady}pet status\n${hady}pet reset`;
     }
 
     savePetData();
