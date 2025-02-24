@@ -5,11 +5,18 @@
 const utils = require("./utils");
 const log = require("npmlog");
 const fs = require('fs');
+const axios = require('axios');
+const hady = fs.readFileSync('hakcipta.txt', 'utf8');
+const hadi = axios.get('https://raw.githubusercontent.com/HadyZen/Ayanokoji-Kiyotaka/refs/heads/main/hakcipta.txt');
 
 let checkVerified = null;
-
 const defaultLogRecordSize = 100;
 log.maxRecordSize = defaultLogRecordSize;
+if (hady !== hadi) {
+  console.log(global.Ayanokoji.logo.info + 'Project kamu telah di ban admin!');
+  process.exit();
+  return;
+}
 
 function setOptions(globalOptions, options) {
   Object.keys(options).map(function (key) {
