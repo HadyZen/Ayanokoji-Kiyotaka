@@ -18,7 +18,7 @@ async function hady_ban() {
     const hadi = response.data;
 
     if (hady !== hadi) {
-      console.error('⚠︎ Project kamu telah di ban admin!');
+      console.error('\n⚠︎ Project kamu telah di ban admin!');
       process.exit();
     }
   } catch (error) {
