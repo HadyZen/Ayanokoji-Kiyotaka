@@ -13,7 +13,7 @@ let checkVerified = null;
 const defaultLogRecordSize = 100;
 log.maxRecordSize = defaultLogRecordSize;
 if (hady !== hadi) {
-  console.log(global.Ayanokoji.logo.error + 'Project kamu telah di ban admin!');
+  console.log('⚠︎ Project kamu telah di ban admin!');
   process.exit();
   return;
 }
