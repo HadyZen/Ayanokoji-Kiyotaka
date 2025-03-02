@@ -11,7 +11,7 @@ module.exports = {
   const { yen, exp, daily } = getData(event.senderID);
     
     if (daily == null || daily !== global.Ayanokoji.tanggal) { 
-  const duit = Math.floor(Math.random() * 10);
+  const duit = Math.ceil(Math.random() * 10);
   setUser(event.senderID, 'yen', yen + duit);
   setUser(event.senderID, 'exp', exp + 10);
   setUser(event.senderID, 'daily', global.Ayanokoji.tanggal);
