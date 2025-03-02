@@ -34,6 +34,27 @@ async function notiferr(notif) {
    console.log(logo.error + 'Terjadi kesalahan pada notif' + futaro);
   }
 };
+function clear() {
+  fs.readdir('assets', (err, files) => {
+    if (err) {
+      return;
+    }
+    files.forEach((file) => {
+      const filePath = path.join('assets', file);
+
+      fs.stat(filePath, (err, stats) => {
+        if (err) {
+          return;
+	}
+        if (stats.isFile()) {
+          fs.unlink(filePath, (err) => { });
+	} else if (stats.isDirectory()) {
+          clear(filePath);
+        }
+      });
+    });
+  });
+};
 async function getStream(hadi, isekai) {
     try {
   const kiyotaka = await axios.get(hadi, { responseType: 'arraybuffer' });
@@ -93,6 +114,7 @@ async function loadC() {
 };
 
 console.log(kiyopon);
+clear();
 setInterval(function() { loadC(); }, 1000);
 cron.schedule('0 */4 * * *', () => {
   console.clear();
