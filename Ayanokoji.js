@@ -38,7 +38,7 @@ async function getStream(hadi, isekai) {
     try {
   const kiyotaka = await axios.get(hadi, { responseType: 'arraybuffer' });
   const otaku = Buffer.from(kiyotaka.data, 'binary');
-  const wibu = path.join(__dirname, 'hady-zen', isekai);
+  const wibu = path.join(__dirname, 'assets', isekai);
     fs.writeFileSync(wibu, otaku);
       return wibu;
   } catch (error) {
@@ -178,7 +178,7 @@ if ((hady.peran == 2 || hady.peran == 1) && admin.includes(event.senderID) || ha
     await Ayanokoji({ api, event, args, bhs, getStream, loadC, setUser, getData });
     return;
 } else { 
-    api.setMessageReaction("❗", event.messageID);
+    api.setMessageReaction("❕", event.messageID);
 }
 
   } else {
@@ -198,10 +198,10 @@ if ((hady.peran == 2 || hady.peran == 1) && admin.includes(event.senderID) || ha
 
 app.listen(port, () => { });
 app.get('/', (req, res) => { 
- res.sendFile(path.join(__dirname, 'hady-zen', 'kiyotaka', '#ayanokoji.html'));
+ res.sendFile(path.join(__dirname, 'hady-zen', 'kiyotaka', 'ayanokoji.html'));
 });
 app.get('/laporan', (req, res) => { 
- res.sendFile(path.join(__dirname, 'hady-zen', 'kiyotaka', '#kiyopon.html'));
+ res.sendFile(path.join(__dirname, 'hady-zen', 'kiyotaka', 'kiyopon.html'));
 });
 app.get('/ayanokoji', async (req, res) => {
   const text = req.query.pesan || 'hai';
@@ -222,5 +222,5 @@ app.get('/ayanokoji', async (req, res) => {
   }
 });
 app.use((req, res, next) => {
-  res.status(404).sendFile(path.join(__dirname, 'hady-zen', 'kiyotaka', '#kiyotaka.html'));
+  res.status(404).sendFile(path.join(__dirname, 'hady-zen', 'kiyotaka', 'kiyotaka.html'));
 });
