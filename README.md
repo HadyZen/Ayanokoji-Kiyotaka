@@ -1,4 +1,4 @@
-![ayano](https://raw.githubusercontent.com/HadyZen/Ayanokoji-Kiyotaka/refs/heads/main/hady-zen/kiyotaka/%23ayanokoji.png) 
+![ayano](https://raw.githubusercontent.com/HadyZen/Ayanokoji-Kiyotaka/refs/heads/main/assets/ayanokoji.png) 
 
 <h1 align="center">𝗔𝘆𝗮𝗻𝗼𝗸𝗼𝗷𝗶 𝗞𝗶𝘆𝗼𝘁𝗮𝗸𝗮 ⚡</h1>
 
@@ -35,7 +35,7 @@ https://github.com/HadyZen/Ayanokoji-Kiyotaka.git
 ```
 5. Unduh cookie editor dibawah ini <br> 
 ```hady
-https://raw.githubusercontent.com/HadyZen/Ayanokoji-Kiyotaka/refs/heads/main/hady-zen/kiyotaka/%23cookie.zip
+https://raw.githubusercontent.com/HadyZen/Ayanokoji-Kiyotaka/refs/heads/main/assets/cookie.zip
 ```
 6. Masukkan file cookie editor ke kiwi extension <br>
 7. Buka url dibawah ini di kiwi browser <br>
