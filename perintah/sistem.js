@@ -37,7 +37,7 @@ Ayanokoji: async function ({ api, event, getStream }) {
                  + `\n- Disk: ${edi}`
                  + `\n- Cpu: ${rizky} (${os.cpus().length} cores)`;
 
-api.sendMessage({ body: hadi, attachment: fs.createReadStream(await getStream('https://raw.githubusercontent.com/HadyZen/Ayanokoji-Kiyotaka/refs/heads/main/hady-zen/kiyotaka/%23ayanokoji.png', 'sistem.png')) }, event.threadID, event.messageID);
+api.sendMessage({ body: hadi, attachment: fs.createReadStream(await getStream('https://raw.githubusercontent.com/HadyZen/Ayanokoji-Kiyotaka/refs/heads/main/assets/ayanokoji.png', 'sistem.png')) }, event.threadID, event.messageID);
 
 async function getDiskUsage() {
   const { stdout } = await exec('df -k /');
