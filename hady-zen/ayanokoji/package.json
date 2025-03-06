@@ -1,6 +1,6 @@
 {
-    "name": "kiyotaka-fca",
-    "version": "3.2.3",
+    "name": "kiyopon-fca",
+    "version": "3.2.4",
     "description": "Api chatbot Facebook for ayanokoji",
     "main": "index.js",
     "scripts": {
@@ -10,7 +10,7 @@
         "type": "git",
         "url": "https://github.com/HadyZen/Ayanokoji-Kiyotaka.git"
     },
-    "author": "Hady Zen",
+    "author": "Hady Zen'in",
     "license": "MIT",
     "dependencies": {
         "axios": "^1.6.5",
