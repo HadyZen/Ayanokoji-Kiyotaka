@@ -20,16 +20,16 @@ module.exports = {
   
   Ayanokoji: async function ({ api, event, args, setUser, getData, bhs }) { 
     const nama = args.join(' ');
-  if (!nama) { return api.sendMessage(bhs("hady"));
+  if (!nama) { return api.sendMessage(bhs("hady"), event.threadID, event.messageID);
   } 
   if (nama.length > 12) {
-    return api.sendMessage(bhs("hadi"));
+    return api.sendMessage(bhs("hadi"), event.threadID, event.messageID);
   }
    const { yen } = getData(event.senderID);
- if (yen < 2) { return api.sendMessage(bhs("zen"));
+ if (yen < 2) { return api.sendMessage(bhs("zen"), event.threadID, event.messageID);
 }
   setUser(event.senderID, "nama", nama);
   setUser(event.senderID, "yen", yen - 2);
-   api.sendMessage(bhs("kiyopon") + nama);
+   api.sendMessage(bhs("kiyopon") + nama, event.threadID, event.messageID);
  }, 
 };
