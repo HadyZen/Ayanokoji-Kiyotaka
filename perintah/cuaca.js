@@ -61,7 +61,7 @@ module.exports = {
         const dataWeatherToday = dataWeatherDaily[0];
         const msg = `Cuaca sekarang di ${areaName}\n${dataWeather.Headline.Text}\n\nSuhu rendah - tinggi: ${convertFtoC(dataWeatherToday.Temperature.Minimum.Value)} - ${convertFtoC(dataWeatherToday.Temperature.Maximum.Value)}\nTerasa seperti: ${convertFtoC(dataWeatherToday.RealFeelTemperature.Minimum.Value)} - ${convertFtoC(dataWeatherToday.RealFeelTemperature.Maximum.Value)}\nMatahari terbit: ${formatHours(dataWeatherToday.Sun.Rise)}\nMatahari terbenam: ${formatHours(dataWeatherToday.Sun.Set)}\nBulan terbit: ${formatHours(dataWeatherToday.Moon.Rise)}\nBulan terbenam: ${formatHours(dataWeatherToday.Moon.Set)}\nHari: ${dataWeatherToday.Day.LongPhrase}\nMalam: ${dataWeatherToday.Night.LongPhrase}`;
 
-        const bg = await Canvas.loadImage("https://raw.githubusercontent.com/HadyZen/Ayanokoji-Kiyotaka/refs/heads/assets/hadi.png");
+        const bg = await Canvas.loadImage("https://raw.githubusercontent.com/HadyZen/Ayanokoji-Kiyotaka/refs/heads/assets/cuaca.png");
         const { width, height } = bg;
         const canvas = Canvas.createCanvas(width, height);
         const ctx = canvas.getContext("2d");
