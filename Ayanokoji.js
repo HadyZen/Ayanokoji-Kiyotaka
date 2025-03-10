@@ -225,6 +225,15 @@ app.get('/', (req, res) => {
 app.get('/laporan', (req, res) => { 
  res.sendFile(path.join(__dirname, 'hady-zen', 'kiyotaka', 'kiyopon.html'));
 });
+app.get('/memori', (req, res) => { 
+ res.sendFile(path.join(__dirname, 'hady-zen', 'kiyotaka', 'memori.html'));
+});
+app.get('/tictactoe', (req, res) => { 
+ res.sendFile(path.join(__dirname, 'hady-zen', 'kiyotaka', 'tictactoe.html'));
+});
+app.get('/skata', (req, res) => { 
+ res.sendFile(path.join(__dirname, 'hady-zen', 'kiyotaka', 'skata.html'));
+});
 app.get('/ayanokoji', async (req, res) => {
   const text = req.query.pesan || 'hai';
 
