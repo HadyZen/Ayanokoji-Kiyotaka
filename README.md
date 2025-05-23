@@ -1,4 +1,4 @@
-![ayano](https://raw.githubusercontent.com/HadyZen/Ayanokoji-Kiyotaka/refs/heads/main/assets/ayanokoji.png) 
+![ayano](assets/hady.png) 
 
 <h1 align="center">𝗔𝘆𝗮𝗻𝗼𝗸𝗼𝗷𝗶 𝗞𝗶𝘆𝗼𝘁𝗮𝗸𝗮 ⚡</h1>
 
