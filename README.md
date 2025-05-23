@@ -1,4 +1,4 @@
-![ayano](assets/hady.png) 
+![ayano](assets/ayanokoji.png) 
 
 <h1 align="center">𝗔𝘆𝗮𝗻𝗼𝗸𝗼𝗷𝗶 𝗞𝗶𝘆𝗼𝘁𝗮𝗸𝗮 ⚡</h1>
 
